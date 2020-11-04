@@ -58,4 +58,18 @@ router.post('/todos', async (req, res) => {
     }
 });
 
+router.delete('/todos/:id', async (req, res) => {
+    const values = [req.params.id];
+    const text = "DELETE FROM todo WHERE todo_id=$1 RETURNING *";
+    try {
+        const results = await db.query(text, values);
+        res.status(200).json({
+            status: "success",
+            data: results.rows[0]
+        });
+    } catch (err) {
+        console.log(err.message);
+    }
+})
+
 module.exports = router;
