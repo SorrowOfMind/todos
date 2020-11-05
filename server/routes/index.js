@@ -9,7 +9,7 @@ router.get('/todos', async (req, res) => {
             data: results.rows
         })
     } catch (err) {
-        alert(err.message);
+        console.log(err.message);
     }
 });
 
@@ -23,7 +23,7 @@ router.get('/todos/:id', async (req, res) => {
             data: results.rows
         })
     } catch (err) {
-        console.log(err.messagge);
+        console.log(err.message);
     }
 });
 
@@ -44,8 +44,8 @@ router.put('/todos/:id', async (req, res) => {
 });
 
 router.post('/todos', async (req, res) => {
-    const {description} = req.body;
-    const values = [description];
+    const {todo} = req.body;
+    const values = [todo];
     const text = "INSERT INTO todo (description) VALUES ($1) returning *";
     try {
         const results = await db.query(text, values);
@@ -54,7 +54,7 @@ router.post('/todos', async (req, res) => {
             data: results.rows[0]
         })
     } catch (err) {
-        alert(err.message);
+        console.log(err.message);
     }
 });
 
