@@ -5,11 +5,16 @@ const useInput = (initVal) => {
 
     const handleChange = e => setValue(e.target.value);
 
+    const clearInput = () => setValue('');
+
     return [
         value,
         {
-            value,
-            onChange: () => handleChange
+            setInput: {
+                value,
+                onChange: handleChange
+                },
+            clearInput
         }
     ]
 }
