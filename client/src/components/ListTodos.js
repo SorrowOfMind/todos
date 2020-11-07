@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
-import fetchTodos from '../apis/fetchTodos';
+import {useDispatch} from 'react-redux';
+import getTodos from '../store/actions/actions';
 
 const ListTodos = () => {
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        fetchTodos();
+        dispatch(getTodos());
     }, []);
 
     return (
