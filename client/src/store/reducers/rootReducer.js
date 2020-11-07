@@ -1,15 +1,16 @@
-import {GET_TODOS} from '../actions/types';
+import {GET_TODOS, ADD_TODO} from '../actions/types';
 
-const initState = {
-    todos: []
-}
+const initState = [];
 
 const rootReducer = (state = initState, {type, payload}) => {
     switch (type) {
         case GET_TODOS:
-            return {
-                todos: payload
-            }
+            return [...payload];
+        case ADD_TODO:
+            return [
+                ...state,
+                payload
+            ]
         default:
             return state;
     }
