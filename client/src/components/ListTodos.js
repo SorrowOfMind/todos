@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {getTodos} from '../store/actions/actions';
+import {getTodos, deleteTodo} from '../store/actions/actions';
 
 const ListTodos = () => {
     const dispatch = useDispatch();
@@ -9,6 +9,10 @@ const ListTodos = () => {
     useEffect(() => {
             dispatch(getTodos());
     }, [dispatch]);
+
+    const handleDelete = id => {
+        dispatch(deleteTodo(id));
+    }
 
     return (
         <div>
@@ -19,8 +23,8 @@ const ListTodos = () => {
                         <tr className="d-flex">
                             <th scope="col" className="col-1">#</th>
                             <th scope="col" className="col-7 text-left">Task</th>
-                            <th scope="col" className="col-2 text-center">Edit</th>
-                            <th scope="col" className="col-2 text-center">Delete</th>
+                            <th scope="col" className="col-2 text-left">Edit</th>
+                            <th scope="col" className="col-2 text-left">Delete</th>
                         </tr>
                     </thead>
                     <tbody className="tbl__body" >
@@ -28,8 +32,8 @@ const ListTodos = () => {
                             <tr key={todo.todo_id} className="d-flex">
                                 <th scope="row" className="col-1">{idx + 1}</th>
                                 <td className="col-7 text-left">{todo.description}</td>
-                                <td className="col-2 text-center"><button className="btn btn-success px-4">Edit</button></td>
-                                <td className="col-2 text-center"><button className="btn btn-danger px-4">Edit</button></td>
+                                <td className="col-2 text-left"><button className="btn btn-success px-4">Edit</button></td>
+                                <td className="col-2 text-left"><button className="btn btn-danger px-4" onClick={() => handleDelete(todo.todo_id)}>Delete</button></td>
                             </tr>
                     ))}
                     </tbody>

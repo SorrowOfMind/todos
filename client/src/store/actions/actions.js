@@ -1,4 +1,4 @@
-import {GET_TODOS, ADD_TODO} from './types';
+import {GET_TODOS, ADD_TODO, DELETE_TODO} from './types';
 
 const url = 'http://localhost:5000/todos';
 
@@ -21,6 +21,16 @@ export const addTodo = (todo) => async dispatch => {
         });
         const jsonResults = await results.json();
         dispatch({type: ADD_TODO, payload: jsonResults.data});
+    } catch (err) {
+        console.error(err.message);
+    }
+}
+
+export const deleteTodo = (id) => async dispatch => {
+    try {
+        const results = await fetch(`${url}/${id}`, {method: 'DELETE'});
+        const jsonData = await results.json();
+        dispatch({type: DELETE_TODO, payload:jsonData.data});
     } catch (err) {
         console.error(err.message);
     }
