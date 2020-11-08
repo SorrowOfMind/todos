@@ -12,10 +12,10 @@ const ListTodos = () => {
 
     return (
         <div>
-            <h1 className="display-4 my-4">Your todos</h1>
-            <div className="table-responsive tbl__wrapper">
+            <h1 className="display-5 my-3">Your todos:</h1>
+            <div className="table-responsive">
                 <table className="table">
-                    <thead className="thead-dark tbl__head">
+                    <thead className="thead-dark">
                         <tr className="d-flex">
                             <th scope="col" className="col-1">#</th>
                             <th scope="col" className="col-7 text-left">Task</th>

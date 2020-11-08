@@ -21,14 +21,12 @@ const CreateTodo = () => {
     return (
         <div className="input-wrapper">
             <form onSubmit={handleSubmit}>
-                <div className="form-row">
-                    <div className="col-10">
+                    <div className="input-group">
                         <input type="text" placeholder="Add todo task..." className="form-control" {...connectTodo.setInput} />
+                        <div className="input-group-append">
+                            <button type="submit" className="btn btn-primary px-5">Add</button>
+                        </div>
                     </div>
-                    <div className="col-2">
-                        <button type="submit" className="btn btn-primary">Add</button>
-                    </div>
-                </div>
             </form>
         </div>
     )
