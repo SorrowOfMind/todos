@@ -1,14 +1,5 @@
-.tbl__wrapper {
-  height: 500px;
-  overflow: auto;
-}
-
-.tbl__head {
-  position: sticky;
-  top:0;
-  z-index: 100;
-}
-
 .tbl__body {
-  overflow: auto;
+  display: block;
+  max-height:400px;
+  overflow-y: auto;
 }
