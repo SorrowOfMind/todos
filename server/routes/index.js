@@ -3,7 +3,7 @@ const db = require('../db');
 
 router.get('/todos', async (req, res) => {
     try {
-        const results = await db.query("SELECT * FROM todo", null);
+        const results = await db.query("SELECT * FROM todo ORDER BY todo_id", null);
         res.status(200).json({
             status: "success",
             data: results.rows
@@ -29,6 +29,7 @@ router.get('/todos/:id', async (req, res) => {
 
 router.put('/todos/:id', async (req, res) => {
     const {description} = req.body;
+    console.log(description)
     const {id} = req.params;
     const values = [id, description];
     const text = "UPDATE todo SET description=$2 WHERE todo_id=$1 RETURNING *";
